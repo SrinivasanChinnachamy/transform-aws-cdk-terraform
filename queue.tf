@@ -4,7 +4,7 @@
 # Dead Letter Queue for failed messages
 resource "aws_sqs_queue" "dlq" {
   name                      = "${var.project_name}-dlq"
-  message_retention_seconds = 1209600  # 14 days (Duration.days(14))
+  message_retention_seconds = 1209600 # 14 days (Duration.days(14))
 
   tags = {
     Name        = "DeadLetterQueue"
@@ -15,9 +15,9 @@ resource "aws_sqs_queue" "dlq" {
 
 # Main Processing Queue
 resource "aws_sqs_queue" "processing_queue" {
-  name                      = "${var.project_name}-processing-queue"
-  visibility_timeout_seconds = 300      # Duration.seconds(300)
-  message_retention_seconds = 604800    # 7 days (Duration.days(7))
+  name                       = "${var.project_name}-processing-queue"
+  visibility_timeout_seconds = 300    # Duration.seconds(300)
+  message_retention_seconds  = 604800 # 7 days (Duration.days(7))
 
   # Dead Letter Queue configuration
   redrive_policy = jsonencode({

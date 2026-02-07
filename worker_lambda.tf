@@ -7,7 +7,7 @@ resource "aws_lambda_function" "worker_function" {
   role          = aws_iam_role.worker_lambda_role.arn
   runtime       = "python3.12"
   handler       = "index.handler"
-  timeout       = 300  # Duration.seconds(300)
+  timeout       = 300 # Duration.seconds(300)
 
   filename         = "lambda_worker.zip"
   source_code_hash = data.archive_file.worker_lambda_zip.output_base64sha256

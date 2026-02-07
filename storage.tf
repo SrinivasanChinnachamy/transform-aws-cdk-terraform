@@ -4,7 +4,7 @@
 # S3 Bucket for storing processing results
 resource "aws_s3_bucket" "data_bucket" {
   bucket_prefix = "${var.project_name}-data-"
-  
+
   # RemovalPolicy.DESTROY → force_destroy = true
   force_destroy = true
 
@@ -18,7 +18,7 @@ resource "aws_s3_bucket" "data_bucket" {
 # S3 Bucket versioning configuration
 resource "aws_s3_bucket_versioning" "data_bucket_versioning" {
   bucket = aws_s3_bucket.data_bucket.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -59,12 +59,12 @@ resource "aws_s3_bucket_public_access_block" "data_bucket_pab" {
 # DynamoDB Table for request metadata and status tracking
 resource "aws_dynamodb_table" "metadata_table" {
   name         = "${var.project_name}-metadata-table"
-  billing_mode = "PAY_PER_REQUEST"  # BillingMode.PAY_PER_REQUEST
+  billing_mode = "PAY_PER_REQUEST" # BillingMode.PAY_PER_REQUEST
   hash_key     = "requestId"
 
   attribute {
     name = "requestId"
-    type = "S"  # STRING type
+    type = "S" # STRING type
   }
 
   # RemovalPolicy.DESTROY - allow table deletion

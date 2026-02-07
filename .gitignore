@@ -7,3 +7,7 @@ __pycache__
 .cdk.staging
 cdk.out
 .terraform/
+
+# Terraform
+.terraform/
+.terraform.lock.hcl

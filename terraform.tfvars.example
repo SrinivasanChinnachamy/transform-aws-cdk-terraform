@@ -1,0 +1,29 @@
+# Terraform Variables Configuration Example
+# Copy this file to terraform.tfvars and customize with your values
+
+# AWS Region for resource deployment
+# Default: us-east-1
+# Change this to your preferred AWS region
+aws_region = "us-east-1"
+
+# AWS Account ID (optional)
+# Leave empty to use current AWS account
+# Example: "123456789012"
+aws_account_id = ""
+
+# Environment name
+# Used for tagging and resource identification
+# Common values: dev, staging, production
+environment = "dev"
+
+# Project name
+# Used as prefix for resource naming
+# Must be lowercase and can contain hyphens
+# Example: "my-event-driven-app"
+project_name = "event-driven-stack"
+
+# Additional configuration notes:
+# - Resource names will be prefixed with project_name
+# - All resources will be tagged with environment
+# - Ensure project_name is unique within your AWS account
+# - Default tags are applied at the provider level (see main.tf)
